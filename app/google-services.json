@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "41001543662",
+    "firebase_url": "https://chatproject-e25e7.firebaseio.com",
+    "project_id": "chatproject-e25e7",
+    "storage_bucket": "chatproject-e25e7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41001543662:android:550058101421d453",
+        "android_client_info": {
+          "package_name": "com.codedem.chattest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41001543662-e1jc2auec9rcuajkabvpie7bdjqudelu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codedem.chattest",
+            "certificate_hash": "2c061a64289950e1abdf9addbc33429e9ac8bd46"
+          }
+        },
+        {
+          "client_id": "41001543662-8r5pra95pa2ua3sph9ovvd5htgi14b9q.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "41001543662-8r5pra95pa2ua3sph9ovvd5htgi14b9q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv4fU6_f9oCDsuflJfP8omGlUczlqZ4fQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41001543662-8r5pra95pa2ua3sph9ovvd5htgi14b9q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

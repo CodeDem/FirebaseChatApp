@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ChatTest</string>
+    <string name="need_a_new_account">Need a new account</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

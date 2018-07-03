@@ -1,0 +1,19 @@
+const token_id = result.val();
+          console.log('Token ID', token_id);
+          const payload = {
+            notification: {
+              title: "Friend Request",
+              body: `${userName} has sent you friend request`,
+              icon: "default",
+              click_action: "com.codedem.chattest_TARGET_NOTIFICATION"
+            },
+            data : {
+              from_user_id : from_user_id
+            }
+          };
+
+          return admin.messaging().sendToDevice(token_id, payload).then(response => {
+
+            return console.log('This was the notification Feature');
+
+          });

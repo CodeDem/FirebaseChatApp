@@ -1,5 +1,7 @@
 package com.codedem.chattest;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +20,9 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UsersActivity extends AppCompatActivity {
 
@@ -75,7 +80,19 @@ public class UsersActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(UserViewHolder holder, int position, Users model) {
                 // Bind the Chat object to the ChatHolder
-                holder.setName(model.name);
+                holder.setName(model.getName());
+                holder.setStatus(model.getStatus());
+                holder.setUserImage(model.getThumb_image(), getApplicationContext());
+                final String userId = getRef(position).getKey();
+
+                holder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent profileIntent = new Intent(UsersActivity.this, Profile.class);
+                        profileIntent.putExtra("userid", userId);
+                        startActivity(profileIntent);
+                    }
+                });
                 // ...
             }
 
@@ -95,6 +112,18 @@ public class UsersActivity extends AppCompatActivity {
         public void setName(String name) {
             TextView userNameView = (TextView) mView.findViewById(R.id.user_single_name);
             userNameView.setText(name);
+
+        }
+
+        public void setStatus(String status){
+            TextView userStausView = (TextView) mView.findViewById(R.id.user_single_status);
+            userStausView.setText(status);
+        }
+
+        public void setUserImage(String thumb_image, Context context){
+
+            CircleImageView userImageView = mView.findViewById(R.id.user_single_image);
+            Picasso.get().load(thumb_image).placeholder(R.drawable.dhiraj).into(userImageView);
         }
     }
 }

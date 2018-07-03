@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ebebeb"
+    tools:context=".ChatActivity">
+
+    <include
+        android:id="@+id/chat_app_bar"
+        layout="@layout/app_bar_layout" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/message_swipe_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/chat_body_box"
+        android:layout_below="@+id/chat_app_bar">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/messages_lisr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/chat_body_box"
+            android:layout_below="@+id/chat_app_bar"></android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="#fff"
+        android:id="@+id/chat_body_box"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <ImageView
+            android:id="@+id/chat_add"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:src="@drawable/ic_add_black_24dp" />
+
+        <EditText
+            android:id="@+id/chat_text_body"
+            android:layout_width="151dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_weight="8"
+            android:paddingBottom="12dp"
+            android:paddingEnd="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="16dp"
+            android:text="TextView" />
+
+        <ImageView
+            android:id="@+id/chat_send"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:src="@drawable/ic_send_black_24dp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

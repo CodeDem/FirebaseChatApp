@@ -12,14 +12,20 @@ import android.support.design.widget.TabLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 
-public class MainActivity extends AppCompatActivity {
+public class    MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private Toolbar mToolbar;
 
     private ViewPager mViewpager;
     private SectionsPagerAdapter mSectionsPagerAdapter;
+
+    private DatabaseReference mUserRef;
+
     private TabLayout mTablayout;
 
     @Override
@@ -35,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Livfitt chat");
+
+        mUserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid());
 
         mViewpager = (ViewPager) findViewById(R.id.tabPager);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -59,7 +67,18 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser == null){
 
             sendToStart();
+        } else {
+            mUserRef.child("online").setValue(true);
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (FirebaseAuth.getInstance().getCurrentUser() != null ){
+            mUserRef.child("online").setValue(ServerValue.TIMESTAMP);
+        }
+
     }
 
     private void sendToStart() {

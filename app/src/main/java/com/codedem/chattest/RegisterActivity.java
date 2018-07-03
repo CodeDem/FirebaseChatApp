@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.HashMap;
 
@@ -85,12 +86,13 @@ public class RegisterActivity extends AppCompatActivity {
                     String uid = curentUser.getUid();
 
                     mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
-
+                    String deviceToken = FirebaseInstanceId.getInstance().getToken();
                     HashMap<String, String> userMap = new HashMap<>();
                     userMap.put("name", displayName);
                     userMap.put("status", "Hi there, useing LivFitt");
                     userMap.put("image", "default");
                     userMap.put("thumb_image", "default");
+                    userMap.put("device_token", deviceToken);
 
                     mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -104,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     });
 
-                } else {
+                    } else {
                     mRegProgress.hide();
                     Toast.makeText(RegisterActivity.this, "You got some error", Toast.LENGTH_LONG).show();
                 }
